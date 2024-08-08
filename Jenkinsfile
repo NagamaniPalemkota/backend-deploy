@@ -18,8 +18,32 @@ pipeline{
         stage('read the version'){
             steps{
                 script{
-                    echo "app version is: ${parms.appVersion}"
+                    echo "app version is: ${params.appVersion}"
                 }
+            }
+        }
+         stage('Init'){
+            steps{
+                    sh """
+                        cd terraform
+                        terraform init
+                    """
+            }
+        }
+        stage('plan'){
+            steps{
+                    sh """
+                        cd terraform
+                        terraform plan -var="app_version=${params.appVersion}"
+                    """
+            }
+        }
+        stage('apply'){
+            steps{
+                    sh """
+                        cd terraform
+                        terraform apply
+                    """
             }
         }
         
