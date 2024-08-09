@@ -42,7 +42,7 @@ pipeline{
             steps{
                     sh """
                         cd terraform
-                        terraform apply
+                        terraform apply -auto-approve
                     """
             }
         }
