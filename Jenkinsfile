@@ -12,7 +12,7 @@ pipeline{
         nexusUrl = 'nexus.muvva.online:8081'
     }
     parameters {
-        string(name: 'appVersion', defaultValue: '${appVersion}', description: 'Reading version no. of artifact')
+        string(name: 'appVersion', defaultValue: 1.2.0, description: 'Reading version no. of artifact')
     }
     stages{
         stage('read the version'){
